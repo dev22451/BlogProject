@@ -1,3 +1,4 @@
 import Logo from "./Logo.png";
+import HeaderBackground from "./HeaderBackground.png";
 
-export { Logo };
+export { Logo, HeaderBackground };

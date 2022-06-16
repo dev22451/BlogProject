@@ -1,17 +1,19 @@
 import { Layout } from "antd";
-import { Content, Header } from "antd/lib/layout/layout";
+import { Content, Header as Head } from "antd/lib/layout/layout";
 import React from "react";
-import { Navbar } from "../../components";
+import { Navbar, Header } from "../../components";
 import "./Home-style.css";
 
 export const Home = () => {
   return (
     <>
       <Layout>
-        <Header>
+        <Head>
           <Navbar />
-        </Header>
-        <Content></Content>
+        </Head>
+        <Content>
+          <Header />
+        </Content>
       </Layout>
     </>
   );
