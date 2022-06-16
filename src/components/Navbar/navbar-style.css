@@ -1,0 +1,31 @@
+.navbar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.navbar-container {
+  width: 85%;
+  display: flex;
+  /* background: red; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-container .logo {
+  width: 10%;
+  height: auto;
+}
+
+.login-button,
+.signup-button {
+  margin: 10px;
+}
+.signup-button {
+  background: linear-gradient(45deg, #8878f9, #9b72fa) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.login-button {
+  border: 1px solid #9979fd !important;
+  color: #9979fd !important;
+}
