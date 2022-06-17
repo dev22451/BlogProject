@@ -1,20 +1,28 @@
 import { Layout } from "antd";
 import { Content, Header as Head } from "antd/lib/layout/layout";
 import React from "react";
-import { Navbar, Header } from "../../components";
-import "./Home-style.css";
+import { Navbar, Header, PageContent } from "../../components";
+import styled from "styled-components";
+
+const LayoutComponent = styled(Layout)`
+  background: white !important;
+`;
+const HeaderComponent = styled(Head)`
+  background: white !important;
+`;
 
 export const Home = () => {
   return (
     <>
-      <Layout>
-        <Head>
+      <LayoutComponent>
+        <HeaderComponent>
           <Navbar />
-        </Head>
+        </HeaderComponent>
         <Content>
           <Header />
+          <PageContent />
         </Content>
-      </Layout>
+      </LayoutComponent>
     </>
   );
 };

@@ -1,44 +1,14 @@
-.header-wrapper {
-  background-image: url("../../assets/HeaderBackground.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 450px;
-}
-.header-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 45%;
-  margin: auto;
-  height: inherit;
-}
-.header-text {
-  font-size: 3.4rem;
-  color: white;
-  font-weight: 500;
-  line-height: 4.7rem;
-  margin-bottom: 2.5rem;
-}
-
-.searchbar-section {
-  width: 90%;
-}
-
 .ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
   border-top-left-radius: 15px !important;
   border-bottom-left-radius: 15px !important;
 }
 
-.searchbar-section .ant-input {
+.ant-input {
   padding: 10px 5px !important;
   padding-left: 15px !important;
 }
-.searchbar-section
-  .ant-input-search
-  > .ant-input-group
-  > .ant-input-group-addon:last-child {
+
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
   background: linear-gradient(70deg, #fff148, #feda34, #fec724);
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
@@ -63,6 +33,6 @@
   width: 107px;
 }
 
-.searchbar-section .ant-input::placeholder {
+.ant-input::placeholder {
   color: #8189a2 !important;
 }

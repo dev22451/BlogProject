@@ -1,0 +1,13 @@
+.breadcrumb-path {
+  color: #7160fb !important;
+}
+
+.ant-breadcrumb > ol > li {
+  color: #282b3f;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.ant-breadcrumb-separator {
+  color: #7160fb !important;
+}
