@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 interface BlogCardProps {
   image?: string;
-  tag?: string;
+  toolID?: string;
   title?: string;
   author?: string;
-  time?: string;
+  time?: any;
 }
 
 const CardWrapper = styled.div`
@@ -14,6 +14,7 @@ const CardWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 30%;
+  margin: 1rem 0;
 `;
 
 const CardContainer = styled.div`
@@ -39,11 +40,14 @@ const BlogTag = styled.span`
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
+  text-transform: capitalize;
 `;
 const BlogTitle = styled.h2`
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
+  line-height: 36px;
+  margin-bottom: 3rem;
 `;
 const BlogFooter = styled.div`
   display: flex;
@@ -62,7 +66,7 @@ const BlogDate = styled.span`
 `;
 export const BlogCard: React.FC<BlogCardProps> = ({
   image,
-  tag,
+  toolID,
   title,
   author,
   time,
@@ -75,7 +79,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             <BlogImage src={image} alt={title} />
           </BlogImageWrapper>
           <BlogDescription>
-            <BlogTag>{tag}</BlogTag>
+            <BlogTag>{toolID}</BlogTag>
             <BlogTitle>{title}</BlogTitle>
             <BlogFooter>
               <BlogAuthor>{author}</BlogAuthor>

@@ -1,11 +1,11 @@
 import React from "react";
 import { BreadCrumb } from "../Breadcrumb/Breadcrumb";
-import { ToolcardData } from "../../constants/toolcardData";
-// import "./page-content-style.css";
+import { Improver } from "../../assets";
 import { ToolCard } from "../ToolCard/ToolCard";
-import styled from "styled-components";
+import styled, { AnyStyledComponent } from "styled-components";
 import { BlogCard } from "../BlogCard/BlogCard";
 import { BlogCardImage } from "../../assets";
+import { Months } from "../../constants/Months";
 
 const PageContentWrapper = styled.section`
   background: white;
@@ -59,10 +59,24 @@ const BlogCardsWrapper = styled.div`
 const BlogCardsContainer = styled.div`
   width: 83.5%;
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
+interface PageContentProps {
+  tools?: any;
+  blogs?: any;
+}
+export const PageContent: React.FC<PageContentProps> = ({ tools, blogs }) => {
+  const convertToRequiredDate = (date: any) => {
+    const newMonth = date.getUTCMonth();
 
-export const PageContent = () => {
+    const monthName = Months[newMonth];
+
+    let fullDate =
+      monthName + " " + date.getUTCDate() + ", " + date.getUTCFullYear();
+    return fullDate;
+  };
   return (
     <>
       <PageContentWrapper>
@@ -76,35 +90,35 @@ export const PageContent = () => {
             <ToolSelectionContainer>
               <Title>Browse by Tools</Title>
               <ToolCardWrapper>
-                {ToolcardData.map((card) => {
-                  return <ToolCard icon={card?.icon} title={card?.title} />;
+                {tools.map((card: any) => {
+                  return (
+                    <ToolCard
+                      icon={Improver}
+                      title={card?.title}
+                      id={card?.id}
+                    />
+                  );
                 })}
               </ToolCardWrapper>
             </ToolSelectionContainer>
           </ToolSelectionWrapper>
           <BlogCardsWrapper>
             <BlogCardsContainer>
-              <BlogCard
-                image={BlogCardImage}
-                tag="Content Improver"
-                title="Introducing the AI-powered Content Improver"
-                author="Jermy"
-                time="May 11, 2022"
-              />
-              <BlogCard
-                image={BlogCardImage}
-                tag="Content Improver"
-                title="Introducing the AI-powered Content Improver"
-                author="Jermy"
-                time="May 11, 2022"
-              />
-              <BlogCard
-                image={BlogCardImage}
-                tag="Content Improver"
-                title="Introducing the AI-powered Content Improver"
-                author="Jermy"
-                time="May 11, 2022"
-              />
+              {blogs.map((blog: any) => {
+                const { toolID, author, title, date } = blog;
+                const realTime = new Date(date);
+                const fullDate = convertToRequiredDate(realTime);
+
+                return (
+                  <BlogCard
+                    image={BlogCardImage}
+                    toolID={toolID}
+                    title={title}
+                    author={author}
+                    time={fullDate}
+                  />
+                );
+              })}
             </BlogCardsContainer>
           </BlogCardsWrapper>
         </PageContentContainer>

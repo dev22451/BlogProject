@@ -4,6 +4,7 @@ import styled from "styled-components";
 interface ToolcardProps {
   icon?: string;
   title?: string;
+  id?: string;
 }
 
 const ToolCardWrapper = styled.div`
@@ -13,6 +14,7 @@ const ToolCardWrapper = styled.div`
   height: 228px;
   padding: 30px;
   border: 1.5px solid #eeeeee;
+  margin-bottom: 1rem;
 
   &:nth-child(1) {
     background-color: #8878f9;
@@ -40,9 +42,8 @@ const ToolCardTitle = styled.h4`
   font-weight: 500;
   margin: 0;
   text-align: left;
-  &:nth-child(1) {
-    color: white;
-  }
+  width: 100%;
+  word-wrap: break-word;
 `;
 export const ToolCard: React.FC<ToolcardProps> = ({ icon, title }) => {
   return (
