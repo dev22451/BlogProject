@@ -32,8 +32,15 @@ const SearchbarSection = styled.div`
   width: 95%;
 `;
 
-const onSearch = (value: string) => console.log(value);
-export const Header = () => {
+const onSearch = (value: string) => {};
+interface HeaderProps {
+  onSearchTool?: (value?: string) => void;
+  searchedText?: string;
+}
+export const Header: React.FC<HeaderProps> = ({
+  onSearchTool = () => {},
+  searchedText,
+}) => {
   return (
     <>
       <HeaderWrapper>
@@ -46,7 +53,11 @@ export const Header = () => {
               placeholder="Search Tools"
               allowClear
               enterButton="Search"
-              onSearch={onSearch}
+              onSearch={(value) => {
+                onSearchTool(value);
+                // console.log(value, "value");
+              }}
+              value={searchedText}
             />
           </SearchbarSection>
         </HeaderContainer>

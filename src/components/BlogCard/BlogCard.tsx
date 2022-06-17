@@ -1,21 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-
 interface BlogCardProps {
   image?: string;
   toolID?: string;
   title?: string;
   author?: string;
   time?: any;
+  blogsLength?: any;
 }
-
-const CardWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 30%;
-  margin: 1rem 0;
-`;
 
 const CardContainer = styled.div`
   //   width: 83.5%;
@@ -23,7 +15,6 @@ const CardContainer = styled.div`
   border-radius: 11px;
 `;
 const BlogImageWrapper = styled.div``;
-
 const BlogImage = styled.img`
   width: 100%;
   height: auto;
@@ -70,10 +61,19 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   title,
   author,
   time,
+  blogsLength,
 }) => {
+  const CardWrapper = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    margin: 1rem 0;
+    margin-right: ${blogsLength <= 2 ? "4rem" : "unset"};
+  `;
   return (
     <>
-      <CardWrapper>
+      <CardWrapper key={toolID}>
         <CardContainer>
           <BlogImageWrapper>
             <BlogImage src={image} alt={title} />
