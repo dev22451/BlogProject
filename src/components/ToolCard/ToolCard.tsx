@@ -8,6 +8,32 @@ interface ToolcardProps {
   onToolSelect?: (id?: string) => void;
   selectedToolId?: string;
 }
+interface ToolCardWrapperProps {
+  id?: any;
+  selectedToolId?: any;
+}
+const ToolCardWrapper = styled.div<ToolCardWrapperProps>`
+    width: 18%;
+    background: ${(props) =>
+      props?.id === props?.selectedToolId ? "#8878f9" : "white"};
+    border-radius: 15px;
+    height: 228px;
+    padding: 30px;
+    border: 1.5px solid #eeeeee;
+    margin-bottom: 1rem;
+    
+    }
+  `;
+const ToolCardTitle = styled.h4<ToolCardWrapperProps>`
+  font-size: 26px;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  word-wrap: break-word;
+  color: ${(props) =>
+    props?.id === props?.selectedToolId ? "white" : "black"};
+`;
 
 const ToolCardContainer = styled.div`
   display: flex;
@@ -28,29 +54,11 @@ export const ToolCard: React.FC<ToolcardProps> = ({
   selectedToolId,
   id,
 }) => {
-  const ToolCardWrapper = styled.div`
-    width: 18%;
-    background: ${id === selectedToolId ? "#8878f9" : "white"};
-    border-radius: 15px;
-    height: 228px;
-    padding: 30px;
-    border: 1.5px solid #eeeeee;
-    margin-bottom: 1rem;
-    
-    }
-  `;
-  const ToolCardTitle = styled.h4`
-    font-size: 26px;
-    font-weight: 500;
-    margin: 0;
-    text-align: left;
-    width: 100%;
-    word-wrap: break-word;
-    color: ${id === selectedToolId ? "white" : "black"};
-  `;
   return (
     <>
       <ToolCardWrapper
+        id={id}
+        selectedToolId={selectedToolId}
         key={id}
         onClick={() => {
           onToolSelect(id);
@@ -58,7 +66,9 @@ export const ToolCard: React.FC<ToolcardProps> = ({
       >
         <ToolCardContainer>
           <ToolCardImage src={icon} alt={title} />
-          <ToolCardTitle>{title}</ToolCardTitle>
+          <ToolCardTitle id={id} selectedToolId={selectedToolId}>
+            {title}
+          </ToolCardTitle>
         </ToolCardContainer>
       </ToolCardWrapper>
     </>
