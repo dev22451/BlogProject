@@ -50,6 +50,18 @@ const BlogCardsWrapper = styled.div`
   margin: 2rem 0;
 `;
 
+interface BlogCardsContainerProps {
+  blogs?: any;
+}
+const BlogCardsContainer = styled.div<BlogCardsContainerProps>`
+  width: 83.5%;
+  display: flex;
+  align-items: baseline;
+  justify-content: ${(props) =>
+    props?.blogs?.length <= 2 ? "flex-start" : "space-between"};
+  flex-wrap: wrap;
+`;
+
 interface PageContentProps {
   tools?: any;
   blogs?: any;
@@ -71,13 +83,6 @@ export const PageContent: React.FC<PageContentProps> = ({
     return fullDate;
   };
 
-  const BlogCardsContainer = styled.div`
-    width: 83.5%;
-    display: flex;
-    align-items: baseline;
-    justify-content: ${blogs?.length <= 2 ? "flex-start" : "space-between"};
-    flex-wrap: wrap;
-  `;
   return (
     <>
       <PageContentWrapper>
@@ -107,7 +112,7 @@ export const PageContent: React.FC<PageContentProps> = ({
             </ToolSelectionContainer>
           </ToolSelectionWrapper>
           <BlogCardsWrapper>
-            <BlogCardsContainer>
+            <BlogCardsContainer blogs={blogs}>
               {blogs.map((blog: any) => {
                 const { toolID, author, title, date } = blog;
                 const realTime = new Date(date);

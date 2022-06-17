@@ -74,7 +74,11 @@ export const Home = () => {
           <Navbar />
         </HeaderComponent>
         <Content>
-          <Header searchedText={searchedText} onSearchTool={onSearchTool} />
+          <Header
+            setSearchedText={setSearchedText}
+            searchedText={searchedText}
+            onSearchTool={onSearchTool}
+          />
           <PageContent
             tools={tools}
             selectedToolId={selectedTool}

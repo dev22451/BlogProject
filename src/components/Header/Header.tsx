@@ -36,10 +36,12 @@ const onSearch = (value: string) => {};
 interface HeaderProps {
   onSearchTool?: (value?: string) => void;
   searchedText?: string;
+  setSearchedText?: (value?: string) => void;
 }
 export const Header: React.FC<HeaderProps> = ({
   onSearchTool = () => {},
   searchedText,
+  setSearchedText = () => {},
 }) => {
   return (
     <>
@@ -55,9 +57,11 @@ export const Header: React.FC<HeaderProps> = ({
               enterButton="Search"
               onSearch={(value) => {
                 onSearchTool(value);
-                // console.log(value, "value");
               }}
               value={searchedText}
+              onChange={(value) => {
+                setSearchedText(value.target.value);
+              }}
             />
           </SearchbarSection>
         </HeaderContainer>

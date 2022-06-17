@@ -8,7 +8,17 @@ interface BlogCardProps {
   time?: any;
   blogsLength?: any;
 }
-
+interface CardWrapperProps {
+  blogsLength?: any;
+}
+const CardWrapper = styled.div<CardWrapperProps>`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+  margin: 1rem 0;
+  margin-right: ${(props) => (props?.blogsLength <= 2 ? "4rem" : "unset")};
+`;
 const CardContainer = styled.div`
   //   width: 83.5%;
   //   background-color: red;
@@ -63,17 +73,9 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   time,
   blogsLength,
 }) => {
-  const CardWrapper = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 30%;
-    margin: 1rem 0;
-    margin-right: ${blogsLength <= 2 ? "4rem" : "unset"};
-  `;
   return (
     <>
-      <CardWrapper key={toolID}>
+      <CardWrapper blogsLength={blogsLength} key={toolID}>
         <CardContainer>
           <BlogImageWrapper>
             <BlogImage src={image} alt={title} />
